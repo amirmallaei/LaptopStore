@@ -1,0 +1,46 @@
+version : "3"
+
+services:
+  postgres_of_laptopstore:
+    image : postgres:17
+    restart: always
+
+    environment:
+      POSTGRES_PASSWORD: soroosh#963
+      POSTGRES_USER: soroosh
+      POSTGRES_DB: soroosh_db
+
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: "50mb"
+  
+
+  laptopstore_app:
+    build: .
+    image: laptopstore_1.0
+    container_name: laptopstore_app
+    command: bash startup/start.sh
+    restart : unless-stopped
+
+    links:
+      - postgres_of_laptopstore
+      - redis_of_laptopstore
+
+    ports:
+      - "8000:8000"
+
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: "50mb"
+
+  redis_of_laptopstore:
+    image: redis:latest
+    container_name: redis_of_laptopstore
+    restart: unless-stopped
+
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: "50mb"
