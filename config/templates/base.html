@@ -1,0 +1,20 @@
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soroosh Store!</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {%include 'navbar.html'%}
+<div class="container">
+    {%block main%}
+    
+    {%endblock%}
+</div>
+    
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+</html>

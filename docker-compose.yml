@@ -29,6 +29,9 @@ services:
 
     ports:
       - "8000:8000"
+      
+    volumes:
+      - "./config:/config"
 
     logging:
       driver: 'json-file'
