@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block main %}
+
+<h1>Register Page</h1>
+
+<!-- Display all errors and messages on top -->
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+{% if form.errors %}
+    <div class="alert alert-danger">
+        <ul>
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+<!-- Render the form fields manually without errors inside -->
+<form class="form-control" method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="mb-3">
+            {{ field.label_tag }}
+            {{ field }}
+        </div>
+    {% endfor %}
+    <input type="submit" class="btn btn-success" value="Register">
+</form>
+
+{% endblock %}

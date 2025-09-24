@@ -55,7 +55,7 @@ class UserModel(AbstractUser):
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(auto_created=True, null=True, blank=True)
-
+    
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['mobile']
