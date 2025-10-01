@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import redis
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
@@ -78,6 +79,17 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 
+REDIS_HOST = 'redis_of_laptopstore'
+REDIS_PORT=6379
+REDIS_DB=0
+
+REDIS_INSTANCE = redis.StrictRedis(
+    host=REDIS_HOST,
+    port= REDIS_PORT,
+    db = REDIS_DB,
+    decode_responses = False
+
+)
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -153,4 +165,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'amirmallaei@gmail.com'     
-EMAIL_HOST_PASSWORD = 'your_app_password'    
+EMAIL_HOST_PASSWORD = 'necocovqfqvxoulo'    

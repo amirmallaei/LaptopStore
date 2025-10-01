@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block main %}
+<div class="container mt-5">
+    <div class="row">
+        <!-- Left: Laptop Image -->
+        <div class="col-md-6">
+            <img src="{% static 'images/laptop-placeholder.jpg' %}" class="img-fluid rounded shadow-sm" alt="{{ laptop.model_name }}">
+        </div>
+
+        <!-- Right: Laptop Details -->
+        <div class="col-md-6">
+            <h1 class="display-5">{{ laptop.brand }} {{ laptop.model_name }}</h1>
+            <p class="lead text-muted">{{ laptop.operating_system }}</p>
+            <h3 class="text-primary">${{ laptop.price }}</h3>
+            <p class="text-success">In Stock</p>
+
+            <form method="post" >
+                {% csrf_token %}
+                <button type="submit" class="btn btn-lg btn-success w-100 mt-3">Add to Cart</button>
+            </form>
+        </div>
+    </div>
+
+    <hr class="my-5">
+
+    <!-- Specifications Table -->
+    <h2 class="mb-4">Specifications</h2>
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Processor</th>
+                <td>{{ laptop.processor }}</td>
+            </tr>
+            <tr>
+                <th>GPU</th>
+                <td>{{ laptop.gpu }}</td>
+            </tr>
+            <tr>
+                <th>RAM</th>
+                <td>{{ laptop.ram }} GB</td>
+            </tr>
+            <tr>
+                <th>Storage</th>
+                <td>{{ laptop.storage }} TB</td>
+            </tr>
+            <tr>
+                <th>Display Size</th>
+                <td>{{ laptop.display_size }}"</td>
+            </tr>
+            <tr>
+                <th>Resolution</th>
+                <td>{{ laptop.display_resolution }}</td>
+            </tr>
+            <tr>
+                <th>Refresh Rate</th>
+                <td>{{ laptop.refresh_rate }} Hz</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Description / Features -->
+    <h2 class="mb-3">Features</h2>
+    <ul>
+        <li>High performance gaming laptop</li>
+        <li>Powerful NVIDIA GPU for graphics-intensive tasks</li>
+        <li>Large RAM and storage for multitasking and file storage</li>
+        <li>High-refresh-rate display for smooth visuals</li>
+    </ul>
+</div>
+{% endblock %}
