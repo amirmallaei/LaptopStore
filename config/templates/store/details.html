@@ -15,7 +15,7 @@
             <h3 class="text-primary">${{ laptop.price }}</h3>
             <p class="text-success">In Stock</p>
 
-            <form method="post" >
+            <form method="post"  action="{%url 'store:add_to_cart' laptop.id %}">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-lg btn-success w-100 mt-3">Add to Cart</button>
             </form>

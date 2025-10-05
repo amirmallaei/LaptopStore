@@ -20,7 +20,7 @@
                 <h6 class="text-primary">$ {{ laptop.price }}</h6>
             </div>
             <div class="card-footer text-center">
-                <form method="post" >
+                <form method="post" action="{%url 'store:add_to_cart' laptop.id %}">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-success w-100">Add to Cart</button>
                 </form>

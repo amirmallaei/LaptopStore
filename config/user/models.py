@@ -81,3 +81,8 @@ class Profile(models.Model):
     role = models.IntegerField(default=0, choices=ROLE_CHOICE)
     gender = models.IntegerField(default=0, choices=GENDER_CHOICE)
     address = models.TextField(blank=True, null=True)
+
+    def is_user(self):
+        if self.role == 0:
+            return True
+        return False
